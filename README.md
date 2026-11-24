@@ -30,7 +30,7 @@ npm run preview
 
 Comprueba el catálogo, abre cada destino y revisa los precios en CLP, las fechas y los cupos. Recarga una ruta de detalle y verifica que el enlace de regreso abra el catálogo. Prueba también una ruta inexistente y los estados de error y reintento de ambas API.
 
-La compilación se verificó en Chromium 149 y Firefox 151 a 320, 390, 768 y 1440 px. En ambos navegadores se comprobó la apertura de los tres destinos, el enlace directo, la página de error y la recuperación tras un fallo simulado de REST y GraphQL.
+La compilación se verificó en Chromium 149 y Firefox 151 a 320, 390, 768 y 1440 px. En ambos navegadores se comprobó la apertura de los tres destinos, la apertura y recarga de un enlace directo, la página de error y la recuperación tras un fallo simulado de REST y GraphQL.
 
 ## Publicación
 

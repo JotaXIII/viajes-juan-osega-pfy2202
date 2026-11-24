@@ -24,10 +24,6 @@ addEventListener('message', async function (event) {
     return
   }
 
-  const allClients = await self.clients.matchAll({
-    type: 'window',
-  })
-
   switch (event.data) {
     case 'KEEPALIVE_REQUEST': {
       sendToClient(client, {
@@ -64,15 +60,6 @@ addEventListener('message', async function (event) {
 
     case 'CLIENT_CLOSED': {
       activeClientIds.delete(clientId)
-
-      const remainingClients = allClients.filter((client) => {
-        return client.id !== clientId
-      })
-
-      if (remainingClients.length === 0) {
-        self.registration.unregister()
-      }
-
       break
     }
   }

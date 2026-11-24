@@ -20,9 +20,18 @@ const worker = setupWorker(
   }),
 )
 
-export function startMocks() {
+export async function startMocks() {
+  const workerUrl = new URL(`${import.meta.env.BASE_URL}mockServiceWorker.js`, window.location.href)
+
+  if (navigator.serviceWorker && !navigator.serviceWorker.controller) {
+    const registration = await navigator.serviceWorker.getRegistration()
+    if (registration?.active?.scriptURL === workerUrl.href) {
+      await registration.unregister()
+    }
+  }
+
   return worker.start({
-    serviceWorker: { url: `${import.meta.env.BASE_URL}mockServiceWorker.js` },
+    serviceWorker: { url: workerUrl },
     onUnhandledRequest: 'bypass',
     quiet: true,
   })
